@@ -2,17 +2,19 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  border: 1px solid red;
+  // border: 1px solid red;
 }
 html {
   font-size: 62.5%;
 }
 :root {
-  --BG-COLOR1: #011425e5;
+  // --BG-COLOR1: #011425e5;
   --FONT-COLOR: #f6f6f6;
   --CALCULATOR-COLOR1: #2d452f;
   --CALCULATOR-COLOR2: #4c6a4b;
   --CALCULATOR-COLOR3: #cfe2ce;
+  --COLOR-SIGN: crimson;
+  --FONT-FAMILY: consolas, helvetica, sans-serif;
 }
 body {
   min-height: 100vh;
@@ -24,19 +26,95 @@ body {
     radial-gradient(rgba(255, 255, 255, 0.1) 15%, transparent 20%) 8px 9px;
 
   background-size: 16px 16px;
-  background-color: var(--BG-COLOR1);
+  background-color: var(--CALCULATOR-COLOR1);
 
-  display: flex;
+  display: grid;
   justify-content: center;
-  align-items: center;
+  align-content: center;
 
   .box {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(5, 1fr);
+    grid-template-columns: repeat(4, 6.5em);
+    grid-template-rows: minmax(8em, auto) repeat(5, 6.5em);
 
-    // .display {
-    //   grid-column: 1/-1;
-    // }
+    background-color: var(--CALCULATOR-COLOR2);
+    border-radius: 10px;
+    padding: 0.2em;
+
+    box-shadow: 10px 10px 30px rgb(37, 34, 34);
+
+    .output {
+      grid-column: 1/-1;
+      height: 15em;
+
+      color: var(--FONT-COLOR);
+      font-family: var(--FONT-FAMILY);
+      padding: 2em;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-end;
+
+      gap: 3em;
+
+      word-wrap: break-word;
+      word-break: break-all;
+
+      .result {
+        font-size: 3rem;
+        font-weight: 700;
+      }
+      .calculation {
+        font-size: 2.5rem;
+        color: rgba(255, 255, 255, 0.589);
+      }
+    }
+    button {
+      background-color: var(--CALCULATOR-COLOR1);
+      border: none;
+      margin: 0.14em;
+
+      font-size: 2rem;
+      font-weight: 600;
+      color: var(--FONT-COLOR);
+      border-radius: 10px;
+      font-family: var(--FONT-FAMILY);
+
+      cursor: pointer;
+      outline: none;
+      transition: all 1s linear;
+
+      box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
+        rgba(0, 0, 0, 0.3) 0px 8px 15px -3px,
+        rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+
+      &.operators {
+        background-color: var(--FONT-COLOR);
+        color: var(--COLOR-SIGN);
+
+        &:hover {
+          background-color: var(--COLOR-SIGN);
+          color: var(--FONT-COLOR);
+        }
+      }
+      &.equal {
+        grid-column: span 2;
+        background-color: var(--COLOR-SIGN);
+        font-size: 3.5rem;
+
+        &:hover {
+          background-color: var(--FONT-COLOR);
+          color: var(--COLOR-SIGN);
+        }
+      }
+      &:hover {
+        background-color: var(--FONT-COLOR);
+        color: var(--CALCULATOR-COLOR1);
+      }
+      &:active {
+        box-shadow: unset;
+      }
+    }
   }
 }
