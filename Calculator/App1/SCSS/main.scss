@@ -20,13 +20,10 @@ body {
   min-height: 100vh;
   width: 100%;
 
-  background: radial-gradient(black 15%, transparent 16%) 0 0,
-    radial-gradient(black 15%, transparent 16%) 8px 8px,
-    radial-gradient(rgba(255, 255, 255, 0.1) 15%, transparent 20%) 0 1px,
-    radial-gradient(rgba(255, 255, 255, 0.1) 15%, transparent 20%) 8px 9px;
-
-  background-size: 16px 16px;
-  background-color: var(--CALCULATOR-COLOR1);
+  animation-name: move;
+  animation-timing-function: linear;
+  animation-duration: 1.5s;
+  animation-iteration-count: infinite;
 
   display: grid;
   justify-content: center;
@@ -116,5 +113,26 @@ body {
         box-shadow: unset;
       }
     }
+  }
+}
+
+@keyframes move {
+  from {
+    background: radial-gradient(black 15%, transparent 16%) 0 0,
+      radial-gradient(black 15%, transparent 16%) 8px 8px,
+      radial-gradient(rgba(255, 255, 255, 0.1) 15%, transparent 20%) 0 1px,
+      radial-gradient(rgba(255, 255, 255, 0.1) 15%, transparent 20%) 8px 9px;
+
+    background-size: 16px 16px;
+    background-color: var(--CALCULATOR-COLOR1);
+  }
+  to {
+    background: radial-gradient(rgb(61, 64, 65) 15%, transparent 16%) 0px 0px,
+      radial-gradient(black 15%, transparent 16%) 8px 8px,
+      radial-gradient(rgba(255, 255, 255, 0.1) 15%, transparent 20%) 0 1px,
+      radial-gradient(rgba(255, 255, 255, 0.1) 15%, transparent 20%) 8px 9px;
+
+    background-size: 16px 16px;
+    background-color: var(--CALCULATOR-COLOR1);
   }
 }

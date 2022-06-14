@@ -1,9 +1,38 @@
-const buttonNumbers = document.querySelectorAll("data-number");
-const buttonSign = document.querySelectorAll("data-operators");
-const buttonDelete = document.querySelector("data-delete");
-const buttonClean = document.querySelector("data-clean");
-const buttonDot = document.querySelector("data-dot");
-const buttonEqual= document.querySelector("data-equal");
-const outputResult = document.querySelector("data-result");
-const outputCalculation = document.querySelector("data-Calculation");
-/ * ****************************** */
+// class section
+
+// class Calculator{
+//     constructor(operationOutput,resultOutput){
+//       this.operationOutput = operationOutput;
+//       this.resultOutput = resultOutput;
+//     }
+
+//     appendNumber(number){
+//       this.result.innerText = number;
+//     }
+
+//     updateDisplay(){
+//       this.resultOutput.innerText = this.result;
+//     }
+// }
+
+// variables
+
+const resultOutput = document.querySelector("[data-result]");
+const operationOutput = document.querySelector("[data-operation]");
+
+const cleanButton = document.querySelector("[data-clean]");
+const deleteButton = document.querySelector("[data-delete]");
+
+const operatorsButton = document.querySelectorAll("[data-operators]");
+const numbersButton = document.querySelectorAll("[data-number]");
+
+// event
+
+const calculator = new Calculator(operationOutput,resultOutput);
+
+numbersButton.forEach((button)=>{
+  button.addEventListener("click",()=>{
+    calculator.appendNumber(button.innerText);
+    calculator.updateDisplay();
+  })
+})
